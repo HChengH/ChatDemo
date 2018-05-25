@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #import "ChatInfoBar.h"
 
-#define maxWidth 
+#define maxWidth
 
 @interface ChatTableViewController ()<UITableViewDelegate,UITableViewDataSource,FloatingWindowTouchDelegate>
 
