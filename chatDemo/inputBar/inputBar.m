@@ -28,7 +28,7 @@
 
 -(id)init{
     if(self = [super init]){
-        self.backgroundColor = [UIColor blueColor];
+        self.backgroundColor = [UIColor colorWithRed:88/255.f green:86/255.f blue:214/255.f alpha:1];
     }
     [self createSubView];
     return self;
@@ -38,6 +38,8 @@
     self.send  = [[UIButton alloc]init];
     [_send setTitle:@"发送" forState:UIControlStateNormal];
     _send.backgroundColor = [UIColor whiteColor];
+    _send.layer.cornerRadius = 5.f;
+    _send.layer.masksToBounds = YES;
     //_send.tintColor = [UIColor whiteColor];
     [_send setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_send addTarget:self action:@selector(sendMsg) forControlEvents:UIControlEventTouchUpInside];
@@ -58,6 +60,9 @@
     self.textField = [[inputTextField alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
     _textField.font = [UIFont systemFontOfSize:16];
     _textField.delegate = self;
+    _textField.layer.cornerRadius = 5.f;
+    _textField.layer.masksToBounds = YES;
+    _textField.font = [UIFont systemFontOfSize:16];
     
     [self addSubview:_send];
     [self addSubview:_util];

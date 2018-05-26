@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UILabel *ChatName;
 @property (nonatomic, strong) UIButton *disBut;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) UIButton *audioRoomInfoBut;
 @end
 
 @implementation ChatInfoBar
@@ -34,9 +35,14 @@
     [_disBut setTitle:@"close" forState:UIControlStateNormal];
     [_disBut addTarget:self action:@selector(dismiss)
       forControlEvents:UIControlEventTouchUpInside];
+    _audioRoomInfoBut = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [_audioRoomInfoBut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_audioRoomInfoBut setTitle:@"\\=.=/" forState:UIControlStateNormal];
+    [_audioRoomInfoBut addTarget:self action:@selector(showAudioInfo) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:_ChatName];
     [self addSubview:_disBut];
+    [self addSubview:_audioRoomInfoBut];
     
     [_ChatName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
@@ -48,6 +54,16 @@
         make.right.equalTo(self).offset(-10);
         make.centerY.equalTo(self).offset(10);
     }];
+    
+    [_audioRoomInfoBut mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(10);
+        make.centerY.equalTo(self).offset(10);
+    }];
+}
+
+-(void)showAudioInfo{
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"DismissKeyboard" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"showAudioInfo" object:nil];
 }
 
 -(void)dismiss{

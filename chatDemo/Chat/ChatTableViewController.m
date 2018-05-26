@@ -15,15 +15,20 @@
 #import "FloatingWindow.h"
 #import "AppDelegate.h"
 #import "ChatInfoBar.h"
+#import "AudioPanel.h"
 
 #define maxWidth
 
-@interface ChatTableViewController ()<UITableViewDelegate,UITableViewDataSource,FloatingWindowTouchDelegate>
+@interface ChatTableViewController ()<UITableViewDelegate,UITableViewDataSource,
+                                                    FloatingWindowTouchDelegate>
 
 @property (nonatomic, strong) chatData *dataSource;
 @property (nonatomic, strong) ChatInfoBar *topBar;
 @property (nonatomic, strong) UITableView *tableView;
 @property (atomic, strong) inputBar *textView;
+@property (nonatomic, strong) AudioPanel *audioPanel;
+@property (nonatomic, assign) BOOL isAudioPanelShowed;
+@property (nonatomic, strong) UIView *coverView;
 @end
 
 CGFloat mwidth;
@@ -38,27 +43,43 @@ CGFloat mwidth;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
+-(void)addNotifications{
+    [[NSNotificationCenter defaultCenter]
+                        addObserver:self
+                        selector:@selector(keyboardWillChangeFrame:)
+                        name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+                        addObserver:self
+                        selector:@selector(updateData)
+                        name:@"MsgUpdate" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+                        addObserver:self
+                        selector:@selector(closeChatView)
+                        name:@"dismissChatView" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+                        addObserver:self
+                        selector:@selector(tapAction:)
+                        name:@"DismissKeyboard" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+                        addObserver:self
+                        selector:@selector(showAudioPanel)
+                        name:@"showAudioInfo"
+                        object:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     mwidth = ceilf((self.view.frame.size.width/3)*2);
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:@"MsgUpdate" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeChatView) name:@"dismissChatView" object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tapAction:) name:@"DismissKeyboard" object:nil];
-    
+    [self addNotifications];
     UITapGestureRecognizer  * tap = [[UITapGestureRecognizer alloc]
                                      initWithTarget:self
                                      action:@selector(tapAction:)];
     [self.view addGestureRecognizer:tap];
-    
-    
     self.dataSource = [[chatData alloc]init];
-    
     [self createSubView];
 }
 
@@ -74,9 +95,12 @@ CGFloat mwidth;
     
     [self.view addSubview:_tableView];
     
-    _textView.frame = CGRectMake(0, self.view.frame.size.height-40, self.view.frame.size.width, 40);
+    _textView.frame = CGRectMake(0, self.view.frame.size.height-40,
+                                 self.view.frame.size.width, 40);
     
-    _tableView.frame = CGRectMake(0, 0+64, self.view.frame.size.width, self.view.frame.size.height - _textView.frame.size.height-64);
+    _tableView.frame = CGRectMake(0, 0+64, self.view.frame.size.width,
+                                  self.view.frame.size.height
+                                  - _textView.frame.size.height-64);
     
     _topBar = [[ChatInfoBar alloc]initWithFrame:
                CGRectMake(0, 0, 0, 0)andName:@"igames.king"];
@@ -86,6 +110,17 @@ CGFloat mwidth;
         make.left.right.top.equalTo(self.view);
         make.height.mas_equalTo(64);
     }];
+    
+    _coverView = [[UIView alloc]initWithFrame:self.view.frame];
+    _coverView.hidden = YES;
+    _coverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+    [self.view addSubview:_coverView];
+    
+    CGFloat width = (self.view.frame.size.width/5.f)*4.f;
+    _audioPanel = [[AudioPanel alloc]initWithFrame:CGRectMake(-width, 0, width,
+                                                self.view.frame.size.height)];
+    _isAudioPanelShowed = NO;
+    [self.view addSubview:_audioPanel];
 }
 
 #pragma mark -close chat view
@@ -115,6 +150,9 @@ CGFloat mwidth;
 #pragma mark -Dismiss keyboard when touch anywhere else
 - (void)tapAction:(id)sender{
     [_textView keyBoardDismiss];
+    if(_isAudioPanelShowed){
+        [self hideAudioPanel];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,7 +169,8 @@ CGFloat mwidth;
     UIFont *font = [UIFont systemFontOfSize:18];
     NSMutableParagraphStyle *ps = [[NSMutableParagraphStyle alloc]init];
     ps.lineBreakMode = NSLineBreakByWordWrapping;
-    NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:ps.copy};
+    NSDictionary *attributes = @{NSFontAttributeName:font,
+                                 NSParagraphStyleAttributeName:ps.copy};
     CGSize size = [string boundingRectWithSize:CGSizeMake(mwidth, 2000) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     
     return MAX(ceilf(size.height+20), 50) ;
@@ -187,9 +226,13 @@ CGFloat mwidth;
                                  floatValue];
     //键盘目标位置
     CGRect keyboardAimFrame = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    [self keybaordAnimationWithDuration:anumationDuration keyboardOriginY:keyboardAimFrame.origin.y];
+    
+    if(_isAudioPanelShowed){
+        [self hideAudioPanel];
+    }
+    [self keybaordAnimationWithDuration:anumationDuration
+                        keyboardOriginY:keyboardAimFrame.origin.y];
 }
-
 
 // keyboardOriginY: is the target Y coordinate when keyboard poped up
 - (void)keybaordAnimationWithDuration:(CGFloat)duration keyboardOriginY:(CGFloat)keyboardOriginY{
@@ -217,5 +260,44 @@ CGFloat mwidth;
         }
     } completion:^(BOOL finished) {
     }];
+}
+
+#pragma mark -呼出/收起Audio Panel
+- (void)showAudioPanel{
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect originFrame = self.audioPanel.frame;
+        originFrame.origin = CGPointMake(0, 0);
+        self.audioPanel.frame = originFrame;
+    }completion:^(BOOL finished) {
+        self->_isAudioPanelShowed = YES;
+    }];
+    
+    CATransition *t = [CATransition animation];
+    t.duration = 0.35;
+    t.timingFunction = [CAMediaTimingFunction
+                        functionWithName:kCAMediaTimingFunctionLinear];
+    t.type = kCATransitionFade;
+    [self.coverView.layer addAnimation:t forKey:@"fadeCover"];
+    self.coverView.hidden = NO;
+}
+
+- (void)hideAudioPanel{
+    CATransition *transition = [CATransition animation];
+    transition.delegate = (id)self;
+    transition.duration = 0.35;
+    transition.timingFunction = [CAMediaTimingFunction
+                                 functionWithName:kCAMediaTimingFunctionEaseIn];
+    transition.type = kCATransitionFade;
+    [self.audioPanel.layer addAnimation:transition forKey:@"fadeOut"];
+    [self.coverView.layer addAnimation:transition forKey:@"coverOut"];
+    CGRect originFrame = self.audioPanel.frame;
+    originFrame.origin = CGPointMake(-originFrame.size.width, 0);
+    self.audioPanel.frame = originFrame;
+    self.coverView.hidden = YES;
+    _isAudioPanelShowed = NO;
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    
 }
 @end

@@ -16,8 +16,6 @@
 #define kScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight [[UIScreen mainScreen] bounds].size.height
 
-
-static const float timeSplit = 1.f / 3.f;
 @interface FloatingWindow ()
 @property (nonatomic ,strong) UILabel *timeLable;
 @property (nonatomic ,copy) NSString *imageNameString;
@@ -150,7 +148,7 @@ static const float timeSplit = 1.f / 3.f;
     maskLayerAnimation.fromValue = (__bridge id)(maskFinalBP.CGPath);
     maskLayerAnimation.toValue = (__bridge id)((maskStartBP.CGPath));
     maskLayerAnimation.duration = 0.5f;
-    maskLayerAnimation.delegate = self;
+    maskLayerAnimation.delegate = (id)self;
     self.samllAnimation = maskLayerAnimation;
     //    maskLayerAnimation.fillMode = kCAFillModeForwards;
     maskLayerAnimation.removedOnCompletion = NO;
@@ -174,7 +172,7 @@ static const float timeSplit = 1.f / 3.f;
     maskLayerAnimation.fromValue = (__bridge id)(maskStartBP.CGPath);
     maskLayerAnimation.toValue = (__bridge id)((maskFinalBP.CGPath));
     maskLayerAnimation.duration = 0.5f;
-    maskLayerAnimation.delegate = self;
+    maskLayerAnimation.delegate = (id)self;
     [maskLayer addAnimation:maskLayerAnimation forKey:@"path"];
     
 }

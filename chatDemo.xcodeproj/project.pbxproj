@@ -11,6 +11,7 @@
 		6219698720B5206C00764FF2 /* ChatInfoBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219698620B5206C00764FF2 /* ChatInfoBar.m */; };
 		6219698D20B577DA00764FF2 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219698B20B577DA00764FF2 /* Player.m */; };
 		6219698E20B577DA00764FF2 /* Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219698C20B577DA00764FF2 /* Recorder.m */; };
+		6219699120B7FFAB00764FF2 /* AudioPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219699020B7FFAB00764FF2 /* AudioPanel.m */; };
 		62696AB920ABE5D200FA2BA0 /* inputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AB620ABE5D200FA2BA0 /* inputBar.m */; };
 		62696ABA20ABE5D200FA2BA0 /* inputTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AB720ABE5D200FA2BA0 /* inputTextField.m */; };
 		62696AC720ABE5F300FA2BA0 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AC420ABE5F300FA2BA0 /* ChatTableViewController.m */; };
@@ -37,6 +38,8 @@
 		6219698A20B577DA00764FF2 /* Recorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recorder.h; sourceTree = "<group>"; };
 		6219698B20B577DA00764FF2 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		6219698C20B577DA00764FF2 /* Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recorder.m; sourceTree = "<group>"; };
+		6219698F20B7FFAB00764FF2 /* AudioPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPanel.h; sourceTree = "<group>"; };
+		6219699020B7FFAB00764FF2 /* AudioPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPanel.m; sourceTree = "<group>"; };
 		62696AB520ABE5D200FA2BA0 /* inputTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inputTextField.h; sourceTree = "<group>"; };
 		62696AB620ABE5D200FA2BA0 /* inputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inputBar.m; sourceTree = "<group>"; };
 		62696AB720ABE5D200FA2BA0 /* inputTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inputTextField.m; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				6219698B20B577DA00764FF2 /* Player.m */,
 				6219698A20B577DA00764FF2 /* Recorder.h */,
 				6219698C20B577DA00764FF2 /* Recorder.m */,
+				6219698F20B7FFAB00764FF2 /* AudioPanel.h */,
+				6219699020B7FFAB00764FF2 /* AudioPanel.m */,
 			);
 			path = AudioChat;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				62DA913720ABD36C0036F41B /* AppDelegate.m in Sources */,
 				62696ACC20AD46DC00FA2BA0 /* chatData.m in Sources */,
 				6219698720B5206C00764FF2 /* ChatInfoBar.m in Sources */,
+				6219699120B7FFAB00764FF2 /* AudioPanel.m in Sources */,
 				62DA915E20ABD5080036F41B /* ContainerViewController.m in Sources */,
 				62696ABA20ABE5D200FA2BA0 /* inputTextField.m in Sources */,
 				62696AC720ABE5F300FA2BA0 /* ChatTableViewController.m in Sources */,
@@ -450,7 +456,6 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
-					"$(SRCROOT)/**",
 				);
 				INFOPLIST_FILE = chatDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -475,7 +480,6 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
-					"$(SRCROOT)/**",
 				);
 				INFOPLIST_FILE = chatDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
