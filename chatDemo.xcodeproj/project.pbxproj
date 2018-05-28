@@ -12,6 +12,7 @@
 		6219698D20B577DA00764FF2 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219698B20B577DA00764FF2 /* Player.m */; };
 		6219698E20B577DA00764FF2 /* Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219698C20B577DA00764FF2 /* Recorder.m */; };
 		6219699120B7FFAB00764FF2 /* AudioPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219699020B7FFAB00764FF2 /* AudioPanel.m */; };
+		624358C920BBAC9300E7B791 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624358C820BBAC9300E7B791 /* ContainerViewController.m */; };
 		62696AB920ABE5D200FA2BA0 /* inputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AB620ABE5D200FA2BA0 /* inputBar.m */; };
 		62696ABA20ABE5D200FA2BA0 /* inputTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AB720ABE5D200FA2BA0 /* inputTextField.m */; };
 		62696AC720ABE5F300FA2BA0 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AC420ABE5F300FA2BA0 /* ChatTableViewController.m */; };
@@ -24,7 +25,6 @@
 		62DA913F20ABD36D0036F41B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62DA913E20ABD36D0036F41B /* Assets.xcassets */; };
 		62DA914220ABD36D0036F41B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62DA914020ABD36D0036F41B /* LaunchScreen.storyboard */; };
 		62DA914520ABD36D0036F41B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DA914420ABD36D0036F41B /* main.m */; };
-		62DA915E20ABD5080036F41B /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DA915D20ABD5080036F41B /* ContainerViewController.m */; };
 		B40889A60EAB527E30827BCE /* libPods-chatDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE61875521BB95D8D76A79B6 /* libPods-chatDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +40,8 @@
 		6219698C20B577DA00764FF2 /* Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recorder.m; sourceTree = "<group>"; };
 		6219698F20B7FFAB00764FF2 /* AudioPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPanel.h; sourceTree = "<group>"; };
 		6219699020B7FFAB00764FF2 /* AudioPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPanel.m; sourceTree = "<group>"; };
+		624358C720BBAC9300E7B791 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		624358C820BBAC9300E7B791 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		62696AB520ABE5D200FA2BA0 /* inputTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inputTextField.h; sourceTree = "<group>"; };
 		62696AB620ABE5D200FA2BA0 /* inputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inputBar.m; sourceTree = "<group>"; };
 		62696AB720ABE5D200FA2BA0 /* inputTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inputTextField.m; sourceTree = "<group>"; };
@@ -62,8 +64,6 @@
 		62DA914120ABD36D0036F41B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62DA914320ABD36D0036F41B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62DA914420ABD36D0036F41B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		62DA915C20ABD5080036F41B /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
-		62DA915D20ABD5080036F41B /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		9F558144CB2D37EB3199D8CD /* Pods-chatDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chatDemo/Pods-chatDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		AE61875521BB95D8D76A79B6 /* libPods-chatDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-chatDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,6 +120,15 @@
 			path = AudioChat;
 			sourceTree = "<group>";
 		};
+		624358C620BBAC6700E7B791 /* ViewContainer */ = {
+			isa = PBXGroup;
+			children = (
+				624358C720BBAC9300E7B791 /* ContainerViewController.h */,
+				624358C820BBAC9300E7B791 /* ContainerViewController.m */,
+			);
+			path = ViewContainer;
+			sourceTree = "<group>";
+		};
 		62696AB420ABE5D200FA2BA0 /* inputBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +183,7 @@
 		62DA913420ABD36C0036F41B /* chatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				624358C620BBAC6700E7B791 /* ViewContainer */,
 				6219698820B576CF00764FF2 /* AudioChat */,
 				6219698420B5203E00764FF2 /* ChatInfoBar */,
 				6219697D20B4229500764FF2 /* FloatWindow */,
@@ -189,8 +199,6 @@
 				62DA914020ABD36D0036F41B /* LaunchScreen.storyboard */,
 				62DA914320ABD36D0036F41B /* Info.plist */,
 				62DA914420ABD36D0036F41B /* main.m */,
-				62DA915C20ABD5080036F41B /* ContainerViewController.h */,
-				62DA915D20ABD5080036F41B /* ContainerViewController.m */,
 			);
 			path = chatDemo;
 			sourceTree = "<group>";
@@ -303,13 +311,13 @@
 				62696ACC20AD46DC00FA2BA0 /* chatData.m in Sources */,
 				6219698720B5206C00764FF2 /* ChatInfoBar.m in Sources */,
 				6219699120B7FFAB00764FF2 /* AudioPanel.m in Sources */,
-				62DA915E20ABD5080036F41B /* ContainerViewController.m in Sources */,
 				62696ABA20ABE5D200FA2BA0 /* inputTextField.m in Sources */,
 				62696AC720ABE5F300FA2BA0 /* ChatTableViewController.m in Sources */,
 				62696ACF20AD57AD00FA2BA0 /* Message.m in Sources */,
 				62696AB920ABE5D200FA2BA0 /* inputBar.m in Sources */,
 				62696AC820ABE5F300FA2BA0 /* BubbleTableViewCell.m in Sources */,
 				6219698E20B577DA00764FF2 /* Recorder.m in Sources */,
+				624358C920BBAC9300E7B791 /* ContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

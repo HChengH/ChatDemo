@@ -22,11 +22,6 @@
     //self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[ContainerViewController alloc]init]];
     self.window.rootViewController = [[ContainerViewController alloc]init];
     [self.window makeKeyAndVisible];
-    
-    self.floatWindow = [[FloatingWindow alloc] initWithFrame:CGRectMake(100, 100, 76, 76) imageName:@"av_call"];
-    [self.floatWindow makeKeyAndVisible];
-    self.floatWindow.hidden = YES;
-    
     return YES;
 }
 

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FloatingWindow.h"
 
 @interface ContainerViewController : UIViewController
-
+@property (strong, nonatomic) FloatingWindow *floatWindow;
 @end

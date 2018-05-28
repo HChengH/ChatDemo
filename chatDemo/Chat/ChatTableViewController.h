@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol containerDelegate <NSObject>
+-(void) DismissWindow:(UIView*) target and:(id)weak_self;
+-(void) touchJumpPad;
+@end
 
 @interface ChatTableViewController : UIViewController
-
+@property(nonatomic, weak)id<containerDelegate> myDelegate;
 @end

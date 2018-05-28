@@ -12,15 +12,13 @@
 #import "Masonry.h"
 #import "chatData.h"
 #import "Message.h"
-#import "FloatingWindow.h"
-#import "AppDelegate.h"
 #import "ChatInfoBar.h"
 #import "AudioPanel.h"
+#import "FloatingWindow.h"
 
 #define maxWidth
 
-@interface ChatTableViewController ()<UITableViewDelegate,UITableViewDataSource,
-                                                    FloatingWindowTouchDelegate>
+@interface ChatTableViewController ()<UITableViewDelegate,UITableViewDataSource,FloatingWindowTouchDelegate>
 
 @property (nonatomic, strong) chatData *dataSource;
 @property (nonatomic, strong) ChatInfoBar *topBar;
@@ -128,23 +126,16 @@ CGFloat mwidth;
     [self Dismiss];
 }
 
-#pragma mark -Floating Window delegate methods
-- (void)Dismiss{
-    AppDelegate *deleage = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
+-(void)Dismiss{
     __weak typeof (self) weakSelf = self;
-    deleage.floatWindow.floatDelegate = weakSelf;
-    
-    [deleage.floatWindow startWithTime:30 presentview:self.view inRect:CGRectMake([UIScreen mainScreen].bounds.size.width - 100, [UIScreen mainScreen].bounds.size.height-150, 76, 76)];
-    
+    [self.myDelegate DismissWindow:self.view and:weakSelf];
     [self.navigationController dismissViewControllerAnimated:NO completion:^{
-
+        
     }];
 }
 
--(void)assistiveTocuhs {
-    AppDelegate *deleage = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    deleage.floatWindow.windowLevel = UIWindowLevelStatusBar-1;
+-(void) assistiveTocuhs{
+    [self.myDelegate touchJumpPad];
 }
 
 #pragma mark -Dismiss keyboard when touch anywhere else

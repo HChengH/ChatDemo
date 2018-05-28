@@ -9,10 +9,8 @@
 #import "ContainerViewController.h"
 #import "Masonry.h"
 #import "ChatTableViewController.h"
-#import "FloatingWindow.h"
-#import "AppDelegate.h"
 
-@interface ContainerViewController ()
+@interface ContainerViewController ()<containerDelegate, FloatingWindowTouchDelegate>
 @property (nonatomic, strong) UIButton *button;
 @end
 
@@ -34,23 +32,34 @@
         make.centerX.centerY.equalTo(self.view);
     }];
     
-    //[self jump];
+    self.floatWindow = [[FloatingWindow alloc] initWithFrame:CGRectMake(100, 100, 76, 76) imageName:@"av_call"];
+    [self.floatWindow makeKeyAndVisible];
+    self.floatWindow.hidden = YES;
+}
+
+#pragma mark -Floating Window delegate methods
+- (void)DismissWindow:(UIView*) target and:(id)weak_self{
+    self.floatWindow.floatDelegate = weak_self;
+    [self.floatWindow startWithTime:30 presentview:target inRect:CGRectMake([UIScreen mainScreen].bounds.size.width - 100, [UIScreen mainScreen].bounds.size.height-150, 76, 76)];
+}
+
+-(void)touchJumpPad{
+    [self assistiveTocuhs];
+}
+
+-(void)assistiveTocuhs {
+    self.floatWindow.windowLevel = UIWindowLevelStatusBar-1;
 }
 
 -(void) jump{
-//    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:[[ChatTableViewController alloc]init]];
     ChatTableViewController *chatVC = [[ChatTableViewController alloc]init];
+    chatVC.myDelegate = self;
     
     UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:chatVC];
     [navi setNavigationBarHidden:YES];
     [self presentViewController:navi animated:YES completion:^{
         [self.button removeFromSuperview];
     }];
-}
-
-
-- (void)popUp{
-    
 }
 
 - (void)didReceiveMemoryWarning {
