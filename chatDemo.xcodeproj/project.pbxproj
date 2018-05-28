@@ -13,6 +13,7 @@
 		6219698E20B577DA00764FF2 /* Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219698C20B577DA00764FF2 /* Recorder.m */; };
 		6219699120B7FFAB00764FF2 /* AudioPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6219699020B7FFAB00764FF2 /* AudioPanel.m */; };
 		624358C920BBAC9300E7B791 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624358C820BBAC9300E7B791 /* ContainerViewController.m */; };
+		624358CC20BBBB4000E7B791 /* chatDemo_dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 624358CB20BBBB4000E7B791 /* chatDemo_dummy.m */; };
 		62696AB920ABE5D200FA2BA0 /* inputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AB620ABE5D200FA2BA0 /* inputBar.m */; };
 		62696ABA20ABE5D200FA2BA0 /* inputTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AB720ABE5D200FA2BA0 /* inputTextField.m */; };
 		62696AC720ABE5F300FA2BA0 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 62696AC420ABE5F300FA2BA0 /* ChatTableViewController.m */; };
@@ -42,6 +43,7 @@
 		6219699020B7FFAB00764FF2 /* AudioPanel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPanel.m; sourceTree = "<group>"; };
 		624358C720BBAC9300E7B791 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		624358C820BBAC9300E7B791 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		624358CB20BBBB4000E7B791 /* chatDemo_dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = chatDemo_dummy.m; sourceTree = "<group>"; };
 		62696AB520ABE5D200FA2BA0 /* inputTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inputTextField.h; sourceTree = "<group>"; };
 		62696AB620ABE5D200FA2BA0 /* inputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inputBar.m; sourceTree = "<group>"; };
 		62696AB720ABE5D200FA2BA0 /* inputTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inputTextField.m; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				62DA914020ABD36D0036F41B /* LaunchScreen.storyboard */,
 				62DA914320ABD36D0036F41B /* Info.plist */,
 				62DA914420ABD36D0036F41B /* main.m */,
+				624358CB20BBBB4000E7B791 /* chatDemo_dummy.m */,
 			);
 			path = chatDemo;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				62DA913720ABD36C0036F41B /* AppDelegate.m in Sources */,
 				62696ACC20AD46DC00FA2BA0 /* chatData.m in Sources */,
 				6219698720B5206C00764FF2 /* ChatInfoBar.m in Sources */,
+				624358CC20BBBB4000E7B791 /* chatDemo_dummy.m in Sources */,
 				6219699120B7FFAB00764FF2 /* AudioPanel.m in Sources */,
 				62696ABA20ABE5D200FA2BA0 /* inputTextField.m in Sources */,
 				62696AC720ABE5F300FA2BA0 /* ChatTableViewController.m in Sources */,
